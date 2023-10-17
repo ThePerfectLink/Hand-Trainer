@@ -43,6 +43,8 @@ class Application(tk.Frame):
         self.master = master
         self.pack()
         self.winfo_toplevel().title("Pocket Trainer")
+        icon = PhotoImage(file="./Poker.png")
+        self.winfo_toplevel().iconphoto(False, icon)
 
         try:
             self.sets = actions.read("custom_hand_rules.csv")
