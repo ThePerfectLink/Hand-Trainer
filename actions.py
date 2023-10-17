@@ -11,7 +11,6 @@ def pocketcard(exemption):
             break
     return name
 
-
 def read(filename):
     file = open(filename, 'r')
     try:
@@ -20,5 +19,17 @@ def read(filename):
         for row in csv_reader:
             combos[row.get("pocket")] = row.get("seat")
         return combos
+    except:
+        raise Exception("no file")
+    finally:
+        file.close()
+
+def save(filename, list):
+    file = open(filename, 'w')
+    try:
+        csv_writer = csv.DictWriter(file, fieldnames=['pocket', 'seat'])
+        for pair in list:
+            print({pair})
+            csv_writer.writerow({'pocket': pair, 'seat': list[pair]})
     finally:
         file.close()
